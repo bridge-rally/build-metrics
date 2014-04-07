@@ -14,7 +14,9 @@ Ext.define('view.Metrics', {
             title: 'Build Metrics',
             store: this.getMetricStore(),
             minHeight: 200,
-
+            viewConfig: {
+                enableTextSelection: true
+            },
             columns: [{
                 header: 'Metric',
                 dataIndex: 'description',

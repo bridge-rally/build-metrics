@@ -14,22 +14,14 @@ Ext.define('controller.Metrics', {
     },
 
     buildDefinitions: [
-        // '/builddefinition/14104398785' // alm
-        '/builddefinition/6880582633', // master-alm-continuous-java
-        '/builddefinition/12178128372', // master-alm-continuous-guitest
-        '/builddefinition/10399281081',  // master-alm-continuous-js-chrome
-        '/builddefinition/10399281167', // master-alm-continuous-js-firefox
-        '/builddefinition/4654068723' // master-flaky-finder-continuous
+        '/builddefinition/14104398785' // alm
+//        '/builddefinition/13714100093' // appsdk
+//          '/builddefinition/16592393460' // app-catalog
+
     ],
 
     metrics: [
-        'metric.BuildsCounted',
-        'metric.GreenTimePerDay',
-        'metric.JobSuccessRate',
-        'metric.NewestBuild',
-        'metric.OldestBuild',
-        'metric.RedToGreenTime',
-        'metric.TimeSinceRed'
+        'metric.GreenTimePerDayForOneBuild'
     ],
 
     init: function() {
@@ -43,13 +35,15 @@ Ext.define('controller.Metrics', {
     },
 
     filterByTime: function() {
-        var startTime = Ext.Date.format(Ext.Date.add(new Date(), Ext.Date.DAY, -14), 'Y-m-d');
+        //var startTime = Ext.Date.format(Ext.Date.add(new Date(), Ext.Date.DAY, -1), 'Y-m-d');
+        var daysBefore = 180;
+        var startTime = "today - " + daysBefore;
 
         return Ext.create('Rally.data.QueryFilter', {
             property: 'Start',
-            operator: '>',
+            operator: '>=',
             value: startTime
-        })
+        });
     },
 
     filterByBuildDefinition: function() {
@@ -63,6 +57,9 @@ Ext.define('controller.Metrics', {
     },
 
     onBuildStoreLoad: function(store, records, successful) {
+        _.forEach(records, function(record) {
+
+        });
         _.forEach(this.metrics, function(metric) {
             metric = Ext.create(metric, {buildDefinitions: this.buildDefinitions});
             metric.sample(records);

@@ -1,14 +1,16 @@
 {
-   "name": "BuildMetrics",
+   "name": "Better Build Metric",
    "className": "CustomApp",
    "server": "https://rally1.rallydev.com",
-   "sdk": "2.0rc1",
+   "sdk": "2.0rc2",
    "javascript": [
+      "javascripts/moment.min.js",
       "javascripts/util/Build.js",
       "javascripts/data/model/Metric.js",
       "javascripts/data/store/Metric.js",
       "javascripts/metric/AbstractMetric.js",
       "javascripts/metric/BuildsCounted.js",
+      "javascripts/metric/GreenTimePerDayForOneBuild.js",
       "javascripts/metric/GreenTimePerDay.js",
       "javascripts/metric/JobSuccessRate.js",
       "javascripts/metric/NewestBuild.js",
@@ -21,5 +23,8 @@
    ],
    "css": [
       "styles/app.css"
+   ],
+   "parents": [
+      "burtonjc/build-metrics"
    ]
 }

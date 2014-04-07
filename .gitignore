@@ -7,4 +7,7 @@ App-local.html
 #IDE Files
 .idea
 .c9revisions
+build-metrics.iml
 node_modules
+#Other
+.DS_Store

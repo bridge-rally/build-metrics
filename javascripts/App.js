@@ -10,11 +10,14 @@ Ext.define('CustomApp', {
                 parameters: [{
                     model: 'Build',
                     fetch: true,
+                    context: {
+                        project: null
+                    },
                     limit: Infinity
                 }]
             }
         });
 
         this.add({xtype: 'metricsview'});
-    },
+    }
 });

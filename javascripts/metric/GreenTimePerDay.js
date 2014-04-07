@@ -44,7 +44,7 @@ Ext.define('metric.GreenTimePerDay', {
 
     withinWorkingHours: function(time) {
         var date = new Date(time),
-        hour = date.getHours()
+        hour = date.getHours(),
         day = date.getDay();
         // 6:00 AM to 5:59:59 PM
         return hour > 5 && hour < 18;
@@ -93,6 +93,6 @@ Ext.define('metric.GreenTimePerDay', {
         if(this.days.indexOf(day) == -1) {
             this.days.push(day);
         }
-    },
+    }
 
 });
